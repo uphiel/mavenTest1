@@ -21,7 +21,7 @@ public class LoginController {
 	public String loginPage() {
 		return "login";
 	}
-
+	@RequestMapping(value = "/loginCheck.html")
 	public ModelAndView loginCheck(HttpServletRequest request, LoginCommand loginCommand) {
 		boolean isValidUser = 
 				userService.hasMatchUser(loginCommand.getUserName(), 
@@ -31,6 +31,7 @@ public class LoginController {
 		}else{
 			User user = userService.findUserByUserName(loginCommand.getUserName());
 			user.setLastIp(request.getRemoteAddr());
+			System.out.println(request.getRemoteAddr());
 			user.setLastVisit(new Date());
 			userService.loginSuccess(user);
 			request.getSession().setAttribute("user", user);

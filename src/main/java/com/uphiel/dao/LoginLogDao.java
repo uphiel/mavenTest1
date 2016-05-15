@@ -16,9 +16,14 @@ public class LoginLogDao {
     public void insertLoginLog(LoginLog loginLog){
         String sqlStr = "INSERT INTO t_login_log(user_id, ip, login_datetime) " +
                 " VALUES(?,?,?)";
-        System.out.println("数据库插入语句：" + sqlStr);
-        Object[] args = {loginLog.getLoginLogId(), loginLog.getIp(), loginLog.getLoginDate()};
-        System.out.println("插入数据：" + args.toString());
+        System.out.println("1：" + loginLog.getLoginLogId());
+        System.out.println("2：" + loginLog.getIp());
+        System.out.println("3：" + loginLog.getLoginDate());
+        Object[] args = {5, loginLog.getIp(), loginLog.getLoginDate()};
+        System.out.println("插入数据：" + args[0]);
+        System.out.println("插入数据：" + args[1]);
+        System.out.println("插入数据：" + args[2]);
         jdbcTemplate.update(sqlStr, args);
     }
 }
+
