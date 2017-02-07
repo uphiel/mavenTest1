@@ -1,18 +1,13 @@
 package com.uphiel.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.uphiel.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
-import com.uphiel.domain.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Repository
 public class UserDao {
@@ -22,8 +17,10 @@ public class UserDao {
     public int getMatchCount(String userName, String password) {
         String sqlStr = "SELECT COUNT(*) FROM t_user "
                 + " WHERE user_name=? and password=?";
-        System.out.println("数据库插入语句：" + sqlStr);
+        System.out.println("数据库查询语句：" + sqlStr);
+        System.out.println("数据库查询参数：[" + userName + "," + password + "]");
         int length = jdbcTemplate.queryForObject(sqlStr,  new Object[]{userName, password}, Integer.class);
+        System.out.println("数据库查询结果：" + length);
         return length;
     }
 
