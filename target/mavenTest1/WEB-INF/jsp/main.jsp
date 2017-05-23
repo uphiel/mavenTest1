@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>main.jsp</title>
 </head>
 <body>
-	#{user.userName},welcome! Your credit is ${user.credits}.
+	${user.userName},welcome! Your credit is ${user.credits}.
 </body>
 </html>
